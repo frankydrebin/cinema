@@ -1,18 +1,23 @@
 {
-  "name": "cinema-app",
+  "name": "cinema-app-server",
   "version": "1.0.0",
-  "description": "My course project",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-static"
+    "start": "node index.js"
   },
-  "author": "adiachenko",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankydrebin/cinema.git"
+  },
+  "author": "Test",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frankydrebin/cinema/issues"
+  },
+  "homepage": "https://github.com/frankydrebin/cinema#readme",
   "dependencies": {
-    "lodash": "^4.17.11"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.2.2"
+    "express": "^4.16.4"
   }
 }

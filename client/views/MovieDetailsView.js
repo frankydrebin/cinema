@@ -6,7 +6,7 @@ export default class MovieDetailsView extends View {
 
     setMovie(movie) {
         this.model = movie;
-        this.render();
+        return this.render();
     }
     render () {
         const {name, director, year} = this.model;

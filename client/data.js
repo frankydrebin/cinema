@@ -7,7 +7,7 @@ export default {
             id: "1",
             name: "Terminator",
             director: "James Cameron",
-            year: 1988
+            year: 1988,
         },
         {
             id: "2",
