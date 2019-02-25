@@ -10,9 +10,10 @@ export default class MovieDetailsView extends View {
     }
     render () {
         const {name, director, year} = this.model;
-        //const name = this.movie.name; const director = this.movie.directore; const year = this.movie.year;
+        
         let movie = document.createElement('div');
-        movie.innerHTML = `<div>title: ${name}</div>
+        movie.innerHTML = ` <div><a href='#movies'>Back to List</a></div>
+                            <div>title: ${name}</div>
                             <div>year: ${year}</div>
                             <div>direcior: ${director}</div>`;
         this.clear();

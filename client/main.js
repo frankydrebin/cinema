@@ -2,11 +2,8 @@ import Movies from './models/Movies.js'
 import MovieListView from './views/MovieListView.js'
 import MovieDetailsView from './views/MovieDetailsView.js'
 
-
-
-let movies = new Movies();
 let movieView = new MovieListView({
-    model: movies
+    model:  new Movies()
 });
 
 const movieDetailsView = new MovieDetailsView({
@@ -16,14 +13,19 @@ const movieDetailsView = new MovieDetailsView({
 const routes = [{
     name: 'movies',
     url: '#movies',
-    view: movieView
+    view: movieView,
+    default: true
 },
 {
     name: 'movieDetails',
     url: '#movies/:id',
     view: movieDetailsView
+}]
+
+function matchView(url) {
+    const view = null;
+    return view;
 }
-]
 let container = document.getElementById('route-container');
 window.addEventListener('hashchange', e => {
     let parts = window.location.hash.split('/');
@@ -41,7 +43,8 @@ window.addEventListener('hashchange', e => {
     container.appendChild(view.element)
 })
 window.addEventListener('load', e => {
-    const view = movieView.render();
+    const route = routes.find(item => item.default === true);
+    const view = route.view.render();
     container.appendChild(view.element)
 })
 
