@@ -1,4 +1,5 @@
 import View from './View.js'
+import router from '../Routes.js';
 export default class MovieDetailsView extends View {
     constructor (options) {
         super(options);

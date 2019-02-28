@@ -1,30 +1,39 @@
 import View from './View.js'
 import MovieView from './MovieView.js'
+import router from '../Routes.js';
 export default class MovieListView extends View {
     constructor(options) {
         super(options);
-        this.model.getMovies().then(result => {
-            this.movieViews = [];
-            this.model.movies.forEach((item)=> {
+        this.movieViews = [];
+        this.delegateEvents();
+    }
+
+    initialize () {
+        return this.model.getMovies().then(result => {
+            result.forEach((item)=> {
                 this.movieViews.push(new MovieView({
                     model: item,
                     tagName: 'div',
                     className: 'movie-item'
                 }))
             })
-            this.delegateEvents();
+            
         })
     }
-    delegateEvents () {
-        // this.element.addEventListener('click', (e)=> {
-        //     const target = e.target;
-        //     if (target.classList.contains('movie-name')) {
-        //         this.detailElement.setMovie(this.model.getMovieById(target.dataset.id))
-        //     }
-        // });
 
-        // const addButton = document.querySelector('#add-new');
-        // addButton.addEventListener('click', this.addMovie.bind(this));
+    delegateEvents () {
+        this.element.addEventListener('click', (e)=> {
+            e.preventDefault();
+            const target = e.target;
+           
+            const movie = this.model.getMovieById(target.dataset.id);
+            let route = router.getRouteByName('details');
+            history.pushState({name: route.name}, 'movie-detail', `/movies/${target.dataset.id}`);
+            route.view.setMovie(movie);
+            let container = document.getElementById('route-container');
+            container.appendChild(route.view.element)
+        });
+
     }
     addMovie () {
         const movie = {
@@ -36,7 +45,6 @@ export default class MovieListView extends View {
         }).render().element)
     }
     render() {
-        this.element.innerHTML = '<button id="add-new" type="button">Add new</button>';
         this.movieViews.forEach(view => {
             this.element.appendChild(view.render().element)
         })

@@ -4,8 +4,8 @@ export default class MovieView extends View {
         super(options)
     }
     render () {
-        this.element.innerHTML = `<div data-id="${this.model.id}" class="movie-name">
-                                        <a href=#movies/${this.model.id}>${this.model.name}</a></div>`; 
+        this.element.innerHTML = `<div class="movie-name">
+                                        <a data-id="${this.model.id}" href=/movies/${this.model.id}>${this.model.name}</a></div>`; 
         return this;
     }
 }

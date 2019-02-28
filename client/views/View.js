@@ -3,7 +3,7 @@ export default class View {
         const {model, tagName='div', el, className} = options;
         this.tagName = tagName;
         this.element = el || document.createElement(this.tagName);
-        this.element.classList.add(className);
+        className && this.element.classList.add(className);
         this.model = model;
     }
     render () {
