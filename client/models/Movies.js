@@ -5,10 +5,8 @@ export default class Movies {
         this.url = url;
     }
     getMovies () {
-        return fetch(this.url).then(res => {
-           return res.json()
-        }).then(res => {
-            this.movies = res;
+        return axios.get(this.url).then(res => {
+            this.movies = res.data;
             return this.movies;
         });
     }

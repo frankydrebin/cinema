@@ -57,6 +57,7 @@ router.registerRoute({
 window.addEventListener('load', e => {
     const route = router.routes.find(item => item.default === true);
     const view = route.view;
+    history.pushState({name: route.name}, route.name, '/')
     container.appendChild(view.element)
     view.initialize().then(() => {
         view.render();
